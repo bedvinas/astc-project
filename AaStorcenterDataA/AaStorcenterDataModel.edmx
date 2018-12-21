@@ -1,0 +1,833 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mmdi0916_1062026Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccRole">
+          <Key>
+            <PropertyRef Name="AccRoleID" />
+          </Key>
+          <Property Name="AccRoleType" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="AccRoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Charity">
+          <Key>
+            <PropertyRef Name="CharityID" />
+          </Key>
+          <Property Name="CharityID" Type="int" Nullable="false" />
+          <Property Name="CharityName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CharityDesc" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="CharitySum" Type="float" Nullable="false" />
+          <Property Name="CharitySumGoal" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemTable">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ItemOldPrice" Type="float" Nullable="false" />
+          <Property Name="ItemNewPrice" Type="float" Nullable="false" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="ModelName" Type="int" Nullable="false" />
+          <Property Name="ModelURL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RankDiscount">
+          <Key>
+            <PropertyRef Name="RDID" />
+          </Key>
+          <Property Name="RDID" Type="int" Nullable="false" />
+          <Property Name="RDStartDate" Type="date" Nullable="false" />
+          <Property Name="RDEndDate" Type="date" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="RankID" Type="int" Nullable="false" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RankTable">
+          <Key>
+            <PropertyRef Name="RankID" />
+          </Key>
+          <Property Name="RankID" Type="int" Nullable="false" />
+          <Property Name="RankName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="RankDescription" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="PointsNeeded" Type="int" Nullable="false" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="StoreName" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionTable">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="int" Nullable="false" />
+          <Property Name="TransValue" Type="float" Nullable="false" />
+          <Property Name="FK_BillID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CharityID" Type="int" Nullable="false" />
+          <Property Name="TransTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TransTypeID" />
+          </Key>
+          <Property Name="TransTypeID" Type="int" Nullable="false" />
+          <Property Name="TransTypeName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="TransTypeScript" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserPoints" Type="int" Nullable="false" />
+          <Property Name="UserPointsSpent" Type="int" Nullable="false" />
+          <Property Name="AccRoleID" Type="int" Nullable="false" />
+          <Property Name="RankID" Type="int" Nullable="false" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Voting">
+          <Key>
+            <PropertyRef Name="VoteID" />
+          </Key>
+          <Property Name="VoteID" Type="int" Nullable="false" />
+          <Property Name="Votes" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ItemTable__Store__00DF2177">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="ItemTable" Type="Self.ItemTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="ItemTable">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rank__StoreID__7E02B4CC">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="RankTable" Type="Self.RankTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="RankTable">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RankDisco__ItemI__11158940">
+          <End Role="ItemTable" Type="Self.ItemTable" Multiplicity="1" />
+          <End Role="RankDiscount" Type="Self.RankDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTable">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="RankDiscount">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RankDisco__RankI__1209AD79">
+          <End Role="RankTable" Type="Self.RankTable" Multiplicity="1" />
+          <End Role="RankDiscount" Type="Self.RankDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RankTable">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="RankDiscount">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RankDisco__Store__12FDD1B2">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="RankDiscount" Type="Self.RankDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="RankDiscount">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Chari__09746778">
+          <End Role="Charity" Type="Self.Charity" Multiplicity="1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Charity">
+              <PropertyRef Name="CharityID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="CharityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Trans__0A688BB1">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransTypeID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="TransTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__UserI__0880433F">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__AccRo__03BB8E22">
+          <End Role="AccRole" Type="Self.AccRole" Multiplicity="1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccRole">
+              <PropertyRef Name="AccRoleID" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="AccRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__RankI__04AFB25B">
+          <End Role="RankTable" Type="Self.RankTable" Multiplicity="1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RankTable">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__Store__05A3D694">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Voting__ItemID__0D44F85C">
+          <End Role="ItemTable" Type="Self.ItemTable" Multiplicity="1" />
+          <End Role="Voting" Type="Self.Voting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTable">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Voting">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Voting__StoreID__0E391C95">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Voting" Type="Self.Voting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="Voting">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mmdi0916_1062026ModelStoreContainer">
+          <EntitySet Name="AccRole" EntityType="Self.AccRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Charity" EntityType="Self.Charity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTable" EntityType="Self.ItemTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RankDiscount" EntityType="Self.RankDiscount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RankTable" EntityType="Self.RankTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionTable" EntityType="Self.TransactionTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voting" EntityType="Self.Voting" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ItemTable__Store__00DF2177" Association="Self.FK__ItemTable__Store__00DF2177">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="ItemTable" EntitySet="ItemTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rank__StoreID__7E02B4CC" Association="Self.FK__Rank__StoreID__7E02B4CC">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="RankTable" EntitySet="RankTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RankDisco__ItemI__11158940" Association="Self.FK__RankDisco__ItemI__11158940">
+            <End Role="ItemTable" EntitySet="ItemTable" />
+            <End Role="RankDiscount" EntitySet="RankDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RankDisco__RankI__1209AD79" Association="Self.FK__RankDisco__RankI__1209AD79">
+            <End Role="RankTable" EntitySet="RankTable" />
+            <End Role="RankDiscount" EntitySet="RankDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RankDisco__Store__12FDD1B2" Association="Self.FK__RankDisco__Store__12FDD1B2">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="RankDiscount" EntitySet="RankDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Chari__09746778" Association="Self.FK__Transacti__Chari__09746778">
+            <End Role="Charity" EntitySet="Charity" />
+            <End Role="TransactionTable" EntitySet="TransactionTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Trans__0A688BB1" Association="Self.FK__Transacti__Trans__0A688BB1">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="TransactionTable" EntitySet="TransactionTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__UserI__0880433F" Association="Self.FK__Transacti__UserI__0880433F">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="TransactionTable" EntitySet="TransactionTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__AccRo__03BB8E22" Association="Self.FK__UserTable__AccRo__03BB8E22">
+            <End Role="AccRole" EntitySet="AccRole" />
+            <End Role="UserTable" EntitySet="UserTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__RankI__04AFB25B" Association="Self.FK__UserTable__RankI__04AFB25B">
+            <End Role="RankTable" EntitySet="RankTable" />
+            <End Role="UserTable" EntitySet="UserTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__Store__05A3D694" Association="Self.FK__UserTable__Store__05A3D694">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="UserTable" EntitySet="UserTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Voting__ItemID__0D44F85C" Association="Self.FK__Voting__ItemID__0D44F85C">
+            <End Role="ItemTable" EntitySet="ItemTable" />
+            <End Role="Voting" EntitySet="Voting" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Voting__StoreID__0E391C95" Association="Self.FK__Voting__StoreID__0E391C95">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Voting" EntitySet="Voting" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mmdi0916_1062026Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccRole">
+          <Key>
+            <PropertyRef Name="AccRoleID" />
+          </Key>
+          <Property Name="AccRoleType" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccRoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserTables" Relationship="Self.FK__UserTable__AccRo__03BB8E22" FromRole="AccRole" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="Charity">
+          <Key>
+            <PropertyRef Name="CharityID" />
+          </Key>
+          <Property Name="CharityID" Type="Int32" Nullable="false" />
+          <Property Name="CharityName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CharityDesc" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CharitySum" Type="Double" Nullable="false" />
+          <Property Name="CharitySumGoal" Type="Double" Nullable="false" />
+          <NavigationProperty Name="TransactionTables" Relationship="Self.FK__Transacti__Chari__09746778" FromRole="Charity" ToRole="TransactionTable" />
+        </EntityType>
+        <EntityType Name="ItemTable">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemOldPrice" Type="Double" Nullable="false" />
+          <Property Name="ItemNewPrice" Type="Double" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__ItemTable__Store__00DF2177" FromRole="ItemTable" ToRole="Store" />
+          <NavigationProperty Name="RankDiscounts" Relationship="Self.FK__RankDisco__ItemI__11158940" FromRole="ItemTable" ToRole="RankDiscount" />
+          <NavigationProperty Name="Votings" Relationship="Self.FK__Voting__ItemID__0D44F85C" FromRole="ItemTable" ToRole="Voting" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="ModelName" Type="Int32" Nullable="false" />
+          <Property Name="ModelURL" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RankDiscount">
+          <Key>
+            <PropertyRef Name="RDID" />
+          </Key>
+          <Property Name="RDID" Type="Int32" Nullable="false" />
+          <Property Name="RDStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RDEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="RankID" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ItemTable" Relationship="Self.FK__RankDisco__ItemI__11158940" FromRole="RankDiscount" ToRole="ItemTable" />
+          <NavigationProperty Name="RankTable" Relationship="Self.FK__RankDisco__RankI__1209AD79" FromRole="RankDiscount" ToRole="RankTable" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__RankDisco__Store__12FDD1B2" FromRole="RankDiscount" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="RankTable">
+          <Key>
+            <PropertyRef Name="RankID" />
+          </Key>
+          <Property Name="RankID" Type="Int32" Nullable="false" />
+          <Property Name="RankName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RankDescription" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PointsNeeded" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RankDiscounts" Relationship="Self.FK__RankDisco__RankI__1209AD79" FromRole="RankTable" ToRole="RankDiscount" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__Rank__StoreID__7E02B4CC" FromRole="RankTable" ToRole="Store" />
+          <NavigationProperty Name="UserTables" Relationship="Self.FK__UserTable__RankI__04AFB25B" FromRole="RankTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <Property Name="StoreName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ItemTables" Relationship="Self.FK__ItemTable__Store__00DF2177" FromRole="Store" ToRole="ItemTable" />
+          <NavigationProperty Name="RankDiscounts" Relationship="Self.FK__RankDisco__Store__12FDD1B2" FromRole="Store" ToRole="RankDiscount" />
+          <NavigationProperty Name="RankTables" Relationship="Self.FK__Rank__StoreID__7E02B4CC" FromRole="Store" ToRole="RankTable" />
+          <NavigationProperty Name="UserTables" Relationship="Self.FK__UserTable__Store__05A3D694" FromRole="Store" ToRole="UserTable" />
+          <NavigationProperty Name="Votings" Relationship="Self.FK__Voting__StoreID__0E391C95" FromRole="Store" ToRole="Voting" />
+        </EntityType>
+        <EntityType Name="TransactionTable">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int32" Nullable="false" />
+          <Property Name="TransValue" Type="Double" Nullable="false" />
+          <Property Name="FK_BillID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CharityID" Type="Int32" Nullable="false" />
+          <Property Name="TransTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Charity" Relationship="Self.FK__Transacti__Chari__09746778" FromRole="TransactionTable" ToRole="Charity" />
+          <NavigationProperty Name="TransactionType" Relationship="Self.FK__Transacti__Trans__0A688BB1" FromRole="TransactionTable" ToRole="TransactionType" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__Transacti__UserI__0880433F" FromRole="TransactionTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TransTypeID" />
+          </Key>
+          <Property Name="TransTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TransTypeName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TransTypeScript" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TransactionTables" Relationship="Self.FK__Transacti__Trans__0A688BB1" FromRole="TransactionType" ToRole="TransactionTable" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPoints" Type="Int32" Nullable="false" />
+          <Property Name="UserPointsSpent" Type="Int32" Nullable="false" />
+          <Property Name="AccRoleID" Type="Int32" Nullable="false" />
+          <Property Name="RankID" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccRole" Relationship="Self.FK__UserTable__AccRo__03BB8E22" FromRole="UserTable" ToRole="AccRole" />
+          <NavigationProperty Name="RankTable" Relationship="Self.FK__UserTable__RankI__04AFB25B" FromRole="UserTable" ToRole="RankTable" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__UserTable__Store__05A3D694" FromRole="UserTable" ToRole="Store" />
+          <NavigationProperty Name="TransactionTables" Relationship="Self.FK__Transacti__UserI__0880433F" FromRole="UserTable" ToRole="TransactionTable" />
+        </EntityType>
+        <EntityType Name="Voting">
+          <Key>
+            <PropertyRef Name="VoteID" />
+          </Key>
+          <Property Name="VoteID" Type="Int32" Nullable="false" />
+          <Property Name="Votes" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ItemTable" Relationship="Self.FK__Voting__ItemID__0D44F85C" FromRole="Voting" ToRole="ItemTable" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__Voting__StoreID__0E391C95" FromRole="Voting" ToRole="Store" />
+        </EntityType>
+        <Association Name="FK__UserTable__AccRo__03BB8E22">
+          <End Role="AccRole" Type="Self.AccRole" Multiplicity="1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccRole">
+              <PropertyRef Name="AccRoleID" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="AccRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Chari__09746778">
+          <End Role="Charity" Type="Self.Charity" Multiplicity="1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Charity">
+              <PropertyRef Name="CharityID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="CharityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemTable__Store__00DF2177">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="ItemTable" Type="Self.ItemTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="ItemTable">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RankDisco__ItemI__11158940">
+          <End Role="ItemTable" Type="Self.ItemTable" Multiplicity="1" />
+          <End Role="RankDiscount" Type="Self.RankDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTable">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="RankDiscount">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Voting__ItemID__0D44F85C">
+          <End Role="ItemTable" Type="Self.ItemTable" Multiplicity="1" />
+          <End Role="Voting" Type="Self.Voting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTable">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Voting">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RankDisco__RankI__1209AD79">
+          <End Role="RankTable" Type="Self.RankTable" Multiplicity="1" />
+          <End Role="RankDiscount" Type="Self.RankDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RankTable">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="RankDiscount">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RankDisco__Store__12FDD1B2">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="RankDiscount" Type="Self.RankDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="RankDiscount">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rank__StoreID__7E02B4CC">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="RankTable" Type="Self.RankTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="RankTable">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__RankI__04AFB25B">
+          <End Role="RankTable" Type="Self.RankTable" Multiplicity="1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RankTable">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__Store__05A3D694">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Voting__StoreID__0E391C95">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Voting" Type="Self.Voting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="Voting">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Trans__0A688BB1">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransTypeID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="TransTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__UserI__0880433F">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mmdi0916_1062026Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccRoles" EntityType="Self.AccRole" />
+          <EntitySet Name="Charities" EntityType="Self.Charity" />
+          <EntitySet Name="ItemTables" EntityType="Self.ItemTable" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <EntitySet Name="RankDiscounts" EntityType="Self.RankDiscount" />
+          <EntitySet Name="RankTables" EntityType="Self.RankTable" />
+          <EntitySet Name="Stores" EntityType="Self.Store" />
+          <EntitySet Name="TransactionTables" EntityType="Self.TransactionTable" />
+          <EntitySet Name="TransactionTypes" EntityType="Self.TransactionType" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <EntitySet Name="Votings" EntityType="Self.Voting" />
+          <AssociationSet Name="FK__UserTable__AccRo__03BB8E22" Association="Self.FK__UserTable__AccRo__03BB8E22">
+            <End Role="AccRole" EntitySet="AccRoles" />
+            <End Role="UserTable" EntitySet="UserTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Chari__09746778" Association="Self.FK__Transacti__Chari__09746778">
+            <End Role="Charity" EntitySet="Charities" />
+            <End Role="TransactionTable" EntitySet="TransactionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemTable__Store__00DF2177" Association="Self.FK__ItemTable__Store__00DF2177">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="ItemTable" EntitySet="ItemTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RankDisco__ItemI__11158940" Association="Self.FK__RankDisco__ItemI__11158940">
+            <End Role="ItemTable" EntitySet="ItemTables" />
+            <End Role="RankDiscount" EntitySet="RankDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Voting__ItemID__0D44F85C" Association="Self.FK__Voting__ItemID__0D44F85C">
+            <End Role="ItemTable" EntitySet="ItemTables" />
+            <End Role="Voting" EntitySet="Votings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RankDisco__RankI__1209AD79" Association="Self.FK__RankDisco__RankI__1209AD79">
+            <End Role="RankTable" EntitySet="RankTables" />
+            <End Role="RankDiscount" EntitySet="RankDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RankDisco__Store__12FDD1B2" Association="Self.FK__RankDisco__Store__12FDD1B2">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="RankDiscount" EntitySet="RankDiscounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rank__StoreID__7E02B4CC" Association="Self.FK__Rank__StoreID__7E02B4CC">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="RankTable" EntitySet="RankTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__RankI__04AFB25B" Association="Self.FK__UserTable__RankI__04AFB25B">
+            <End Role="RankTable" EntitySet="RankTables" />
+            <End Role="UserTable" EntitySet="UserTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__Store__05A3D694" Association="Self.FK__UserTable__Store__05A3D694">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="UserTable" EntitySet="UserTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Voting__StoreID__0E391C95" Association="Self.FK__Voting__StoreID__0E391C95">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Voting" EntitySet="Votings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Trans__0A688BB1" Association="Self.FK__Transacti__Trans__0A688BB1">
+            <End Role="TransactionType" EntitySet="TransactionTypes" />
+            <End Role="TransactionTable" EntitySet="TransactionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__UserI__0880433F" Association="Self.FK__Transacti__UserI__0880433F">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="TransactionTable" EntitySet="TransactionTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mmdi0916_1062026ModelStoreContainer" CdmEntityContainer="mmdi0916_1062026Entities">
+          <EntitySetMapping Name="AccRoles">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.AccRole">
+              <MappingFragment StoreEntitySet="AccRole">
+                <ScalarProperty Name="AccRoleType" ColumnName="AccRoleType" />
+                <ScalarProperty Name="AccRoleID" ColumnName="AccRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Charities">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.Charity">
+              <MappingFragment StoreEntitySet="Charity">
+                <ScalarProperty Name="CharityID" ColumnName="CharityID" />
+                <ScalarProperty Name="CharityName" ColumnName="CharityName" />
+                <ScalarProperty Name="CharityDesc" ColumnName="CharityDesc" />
+                <ScalarProperty Name="CharitySum" ColumnName="CharitySum" />
+                <ScalarProperty Name="CharitySumGoal" ColumnName="CharitySumGoal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTables">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.ItemTable">
+              <MappingFragment StoreEntitySet="ItemTable">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemOldPrice" ColumnName="ItemOldPrice" />
+                <ScalarProperty Name="ItemNewPrice" ColumnName="ItemNewPrice" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="ModelURL" ColumnName="ModelURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RankDiscounts">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.RankDiscount">
+              <MappingFragment StoreEntitySet="RankDiscount">
+                <ScalarProperty Name="RDID" ColumnName="RDID" />
+                <ScalarProperty Name="RDStartDate" ColumnName="RDStartDate" />
+                <ScalarProperty Name="RDEndDate" ColumnName="RDEndDate" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RankTables">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.RankTable">
+              <MappingFragment StoreEntitySet="RankTable">
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="RankName" ColumnName="RankName" />
+                <ScalarProperty Name="RankDescription" ColumnName="RankDescription" />
+                <ScalarProperty Name="PointsNeeded" ColumnName="PointsNeeded" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTables">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.TransactionTable">
+              <MappingFragment StoreEntitySet="TransactionTable">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="TransValue" ColumnName="TransValue" />
+                <ScalarProperty Name="FK_BillID" ColumnName="FK_BillID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CharityID" ColumnName="CharityID" />
+                <ScalarProperty Name="TransTypeID" ColumnName="TransTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTypes">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="TransTypeID" ColumnName="TransTypeID" />
+                <ScalarProperty Name="TransTypeName" ColumnName="TransTypeName" />
+                <ScalarProperty Name="TransTypeScript" ColumnName="TransTypeScript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserPoints" ColumnName="UserPoints" />
+                <ScalarProperty Name="UserPointsSpent" ColumnName="UserPointsSpent" />
+                <ScalarProperty Name="AccRoleID" ColumnName="AccRoleID" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Votings">
+            <EntityTypeMapping TypeName="mmdi0916_1062026Model.Voting">
+              <MappingFragment StoreEntitySet="Voting">
+                <ScalarProperty Name="VoteID" ColumnName="VoteID" />
+                <ScalarProperty Name="Votes" ColumnName="Votes" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

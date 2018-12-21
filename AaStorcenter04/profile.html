@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Storcenter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap-4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light navbar-expand-lg">
+        <a href="index.html" class="navbar navbar-brand">
+            <img src="images/logo.svg" alt="logo" class="logo img-responsive" width="240px" height="40px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-info"></i> Help
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-user"></i> Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container text-center">
+        <h1>Your profile</h1>
+        <hr>
+        <br>
+
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div class="col-sm-12">
+                <!--left col-->
+
+                <div class="text-center">
+                    <h6>@username</h6>
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail mb-2"
+                        alt="avatar">
+                    <h6 id="fname">Firstname</h6>
+                    <h6 id="lname">Lastname</h6>
+                    <hr>
+                </div>
+                <br>
+
+                <ul class="list-group mb-5">
+                    <li class="list-group-item text-muted"> Your loyalty points</li>
+                    <li class="list-group-item text-center">
+                        <p>0 points</p>
+                        <a href="claim_points.html" class="btn btn-success"><i class="fas fa-plus-circle"></i> Claim
+                            points</a>
+                    </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Current level: </strong></span><span
+                            id="lvl">0</span></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Next level: </strong></span><span
+                            id="lvl">1</span></li>
+                </ul>
+                <hr>
+                <div class="text-center">
+                    <a href="#" class="btn btn-danger mb-5">Delete account</a>
+                </div>
+
+
+            </div>
+            <!--/col-sm-12-->
+
+        </div>
+        <!--/row-->
+
+    </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+        <p>Aalborg Storcenter &copy<br />email: storcenter@aalborg.dk<br />phone: 45 2312 0000</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap-4/js/bootstrap.min.js"></script>
+</body>
+
+</html>

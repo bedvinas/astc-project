@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="026a27e8bf404115b940a91ffba0fe86" Name="Diagram1">
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.AccRole" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.Charity" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.ItemTable" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.Model" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.RankDiscount" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.RankTable" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.Store" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.TransactionTable" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.TransactionType" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.UserTable" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mmdi0916_1062026Model.Voting" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__UserTable__AccRo__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__Transacti__Chari__09746778" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__ItemTable__Store__00DF2177" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__RankDisco__ItemI__11158940" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__Voting__ItemID__0D44F85C" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__RankDisco__RankI__1209AD79" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__RankDisco__Store__12FDD1B2" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__Rank__StoreID__7E02B4CC" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__UserTable__RankI__04AFB25B" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__UserTable__Store__05A3D694" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__Voting__StoreID__0E391C95" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__Transacti__Trans__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="mmdi0916_1062026Model.FK__Transacti__UserI__0880433F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
