@@ -234,7 +234,6 @@
     <Content Include="login.html" />
     <Content Include="loyalty.html" />
     <Content Include="main.js" />
-    <Content Include="obj\Debug\AaStorcenter04.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\AaStorcenter04.dll" />
     <Content Include="obj\Debug\AaStorcenter04.pdb" />
     <Content Include="offers.html" />
