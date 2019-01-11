@@ -411,6 +411,7 @@
     <Content Include="obj\Debug\AaStorcenter04.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\AaStorcenter04.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Properties\PublishProfiles\astc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
