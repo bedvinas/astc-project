@@ -233,12 +233,16 @@
     <Content Include="images\item3.jpg" />
     <Content Include="images\item4.jpg" />
     <Content Include="images\logo.svg" />
+    <Content Include="images\red1.jpg" />
     <Content Include="images\sale1.jpg" />
     <Content Include="images\sale2.jpg" />
     <Content Include="images\sale3.jpg" />
     <Content Include="images\sale4.jpg" />
     <Content Include="images\sale5.jpg" />
     <Content Include="images\storcenterfront.jpg" />
+    <Content Include="images\tools-1.jpg" />
+    <Content Include="images\toys1.jpg" />
+    <Content Include="images\winter-att.jpg" />
     <Content Include="index.html" />
     <Content Include="login.html" />
     <Content Include="loyalty.html" />
