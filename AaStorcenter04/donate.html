@@ -19,7 +19,7 @@
             <img src="images/logo.svg" alt="logo" class="logo img-responsive" width="240px" height="40px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -41,13 +41,15 @@
     <div class="jumbotron">
         <div class="container justify-content-center text-center">
             <h1>Donate</h1>
-            <p class="lead">Aalborg Storcenter supports a variety of charities. Beeing a member of our loyalty program
+            <p class="lead">
+                Aalborg Storcenter supports a variety of charities. Beeing a member of our loyalty program
                 you will be able to doante your loyalty points which then will be converted to money given to
-                charities.</p>
+                charities.
+            </p>
         </div>
     </div>
 
-    <div id="cardcontainer" class="container">
+    <div id="cardcontainer" class="container mb-5">
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -68,7 +70,7 @@
                                     <p id="validationMessage"></p>
                                 </div>
                             </div>
-                       </form>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -79,17 +81,33 @@
         </div>
     </div>
 
-
-    <footer class="container-fluid text-center">
+    <br />
+    <br />
+    <footer class="container-fluid text-center d-none d-md-block">
         <p>Aalborg Storcenter &copy<br />email: storcenter@aalborg.dk<br />phone: 45 2312 0000</p>
     </footer>
+
+    <div id="smallnav" class="foo nav-small d-block d-md-none sticky">
+
+        <ul class="row d-block d-md-none">
+            <li class="col-1 col-sm-1 d-md-none">
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="profile.html"><i class="fas1 fas fa-user"></i></a></li>
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="offers.html"><i class="fas1 fas fa-percent"></i></a></li>
+
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="donate.html"><i class="fas1 fas fa-hand-holding-usd"></i></a></li>
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="claim_points.html"><i class="fas1 fas fa-coins"></i></a></li>
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="vote.html"><i class="fas1 fas fa-vote-yea"></i></a></li>
+
+        </ul>
+        <!-- Other footer stuff-->
+    </div>
 
     <script>renderCharities();</script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
     <script src="bootstrap-4/js/bootstrap.min.js"></script>
 
 </body>

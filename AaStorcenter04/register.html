@@ -19,7 +19,7 @@
             <img src="images/logo.svg" alt="logo" class="logo img-responsive" width="240px" height="40px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -37,26 +37,22 @@
             </ul>
         </div>
     </nav>
-
     <div class="container text-center">
         <br>
         <h1>Create your account</h1>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
                 <!--left col-->
-
                 <div class="text-center">
                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                        alt="avatar">
+                         alt="avatar">
                     <h6>Change photo: </h6>
                     <input type="file" class="text-center center-block file-upload">
                 </div>
                 </hr><br>
-
-                <!--   USE THIS IN THE PROFILE PAGE     maybe          
+                <!--   USE THIS IN THE PROFILE PAGE     maybe
                 <ul class="list-group">
                     <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
@@ -64,7 +60,7 @@
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
                 </ul>
- 
+
                 <div class="panel panel-default">
                     <div class="panel-heading">Social Media</div>
                     <div class="panel-body">
@@ -72,46 +68,39 @@
                         <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
                     </div>
                 </div> -->
-
             </div>
             <!--/col-3-->
             <div class="col-sm-9">
                 <hr>
                 <form class="form" action="##" method="post" id="registrationForm">
                     <div class="form-group">
-
                         <div class="col-xs-6">
                             <label for="first_name">
                                 <h4>Name</h4>
                             </label>
                             <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name"
-                                title="Your first name.">
+                                   title="Your first name.">
                         </div>
                     </div>
                     <div class="form-group">
-
                         <div class="col-xs-6">
                             <label for="last_name">
                                 <h4>Surname</h4>
                             </label>
                             <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name"
-                                title="Your last name.">
+                                   title="Your last name.">
                         </div>
                     </div>
-
                     <div class="form-group">
-
                         <div class="col-xs-6">
                             <label for="phone">
                                 <h4>Phone number</h4>
                             </label>
                             <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone number"
-                                title="Your phone number.">
+                                   title="Your phone number.">
                         </div>
                     </div>
-
                     <div class="form-group">
-
                         <div class="col-xs-6">
                             <label for="email">
                                 <h4>E-mail adress</h4>
@@ -120,23 +109,21 @@
                         </div>
                     </div>
                     <div class="form-group">
-
                         <div class="col-xs-6">
                             <label for="password">
                                 <h4>Password</h4>
                             </label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-                                title="Create, memorize and enter your password.">
+                                   title="Create, memorize and enter your password.">
                         </div>
                     </div>
                     <div class="form-group">
-
                         <div class="col-xs-6">
                             <label for="password2">
                                 <h4>Verify password</h4>
                             </label>
                             <input type="password" class="form-control" name="password2" id="password2" placeholder="Repeat password"
-                                title="Repeat the password entered before">
+                                   title="Repeat the password entered before">
                         </div>
                     </div>
                     <div class="form-group">
@@ -145,28 +132,40 @@
                             <!-- <button class="btn btn-lg btn-success" type="submit">Save</button> CHANGE BELOW LINE TO THIS IN PRODUCTION-->
                             <a href="profile.html" class="btn btn-lg btn-success">Submit</a>
                             <button class="btn btn-lg btn-light" type="reset">
-                                <a href="#"></a>Clear</button>
+                                <a href="#"></a>Clear
+                            </button>
                         </div>
                     </div>
                 </form>
-
                 <hr>
-
             </div>
             <!--/col-sm-9-->
-
         </div>
         <!--/row-->
-
     </div>
     <!--/container-->
-    <footer class="container-fluid text-center">
+    <footer class="container-fluid text-center d-none d-md-block">
         <p>Aalborg Storcenter &copy<br />email: storcenter@aalborg.dk<br />phone: 45 2312 0000</p>
     </footer>
+
+    <div id="smallnav" class="foo nav-small d-block d-md-none sticky">
+
+        <ul class="row d-block d-md-none">
+            <li class="col-1 col-sm-1 d-md-none">
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="profile.html"><i class="fas1 fas fa-user"></i></a></li>
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="offers.html"><i class="fas1 fas fa-percent"></i></a></li>
+
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="donate.html"><i class="fas1 fas fa-hand-holding-usd"></i></a></li>
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="claim_points.html"><i class="fas1 fas fa-coins"></i></a></li>
+            <li class="col-2 col-sm-2 d-md-none"><a class="boxy" href="vote.html"><i class="fas1 fas fa-vote-yea"></i></a></li>
+
+        </ul>
+        <!-- Other footer stuff-->
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
     <script src="bootstrap-4/js/bootstrap.min.js"></script>
 </body>
 
