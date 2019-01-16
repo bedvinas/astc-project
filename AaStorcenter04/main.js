@@ -17,8 +17,7 @@ async function api(url) {
 function renderCharities() {
     let cc = document.getElementById("cardcontainer");
 
-    api("Charities").then(function(myJson)
-    {
+    api("Charities").then(function (myJson) {
         console.log(myJson);
 
         for (var i = 0; i < myJson.length; i++) {
@@ -30,6 +29,7 @@ function renderCharities() {
 
             let img = document.createElement("img");
             img.classList.add("card-img-top");
+            img.id = "img" + i;
             img.src = "http://placehold.it/200x150";
 
             cardHeader.appendChild(img);
@@ -64,8 +64,8 @@ function renderCharities() {
 
             cc.appendChild(card);
         }
-    });
-    
+    })
+        .then(function(){ replacePlaceholders(); });
     
             
 }
@@ -155,8 +155,16 @@ function renderVotings() {
 
             cc.appendChild(card);
         }
+        
     });
 
+}
 
-
+function replacePlaceholders() {
+    img0 = document.getElementById("img0");
+    img1 = document.getElementById("img1");
+    img2 = document.getElementById("img2");
+    img0.src = "images/charity0.jpg";
+    img1.src = "images/charity1.jpg";
+    img2.src = "images/charity2.jpg";
 }

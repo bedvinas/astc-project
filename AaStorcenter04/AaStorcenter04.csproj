@@ -228,6 +228,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\bilka-logo.png" />
+    <Content Include="images\charity0.jpg" />
+    <Content Include="images\charity1.jpg" />
+    <Content Include="images\charity2.jpg" />
     <Content Include="images\item1.jpg" />
     <Content Include="images\item2.jpg" />
     <Content Include="images\item3.jpg" />
