@@ -1,0 +1,22 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Aalborg Storcenter",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "https://astc.azurewebsites.net/index.html",
+  "short_name": "ASTC",
+  "theme_color": "transparent",
+  "orientation": "portrait",
+  "background_color": "#F2F2F2",
+  "icons": [
+    {
+      "src": "/icons/icon-192-192.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512-512.png",
+      "sizes": "512x512"
+    }
+  ]
+}
